@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <title>Login</title>
+  </head>
+  <style>
+    form {
+      margin-left: 10rem;
+      width: 70%;
+      border: 1px solid black;
+      border-radius: 10px;
+    }
+    .form-input {
+      margin-left: 2rem;
+      margin-top: 1rem;
+      width: 92%;
+      text-align: left;
+    }
+    .form-input input {
+      background-color: #e8f0fe;
+    }
+  </style>
+  <body>
+    <!--  phan navbar -->
+    <div id="header-wrapper">
+      <div class="container">
+        <!-- Header -->
+        <header id="header">
+          <div class="inner">
+            <!-- Logo -->
+            <h1><a th:href="@{/}" id="logo">LEAGUE OF LENGEND</a></h1>
+            <!-- Nav -->
+            <nav id="nav">
+              <ul>
+                <li class="current_page_item"><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/}">Blog</a></li>
+                <li><a th:href="@{/}">Contact</a></li>
+                <li>
+                  <!-- <li th:if="${#httpServletRequest.remoteUser != null}"> -->
+                  <a th:href="@{/}">Add Blogs</a>
+                </li>
+                <li>
+                  <!-- <li th:if="${#httpServletRequest.remoteUser != null}"> -->
+                  <a th:href="@{/}">Profile</a>
+                  <!-- <a href="#" th:text="${#httpServletRequest.remoteUser}"></a> -->
+                  <a
+                    th:href="@{/}"
+                    style="
+                      background-color: #7b818c;
+                      padding: 10px;
+                      border-radius: 10px;
+                      color: white;
+                    "
+                    >Logout</a
+                  >
+                </li>
+                <!-- {% else %} -->
+                <li>
+                  <!-- <li th:if="${#httpServletRequest.remoteUser == null}"> -->
+                  <a
+                    th:href="@{/}"
+                    style="
+                      background-color: #7b818c;
+                      padding: 10px;
+                      border-radius: 10px;
+                      color: white;
+                    "
+                    >Register</a
+                  >
+                  <a
+                    th:href="@{/}"
+                    style="
+                      background-color: #7b818c;
+                      padding: 10px;
+                      border-radius: 10px;
+                      color: white;
+                    "
+                    >Log In</a
+                  >
+                </li>
+                <!-- {% endif %} -->
+              </ul>
+            </nav>
+          </div>
+        </header>
+      </div>
+    </div>
+    <!-- end navbar -->
+    <div class="wrapper style1">
+      <div class="inner">
+        <section class="container box feature1">
+          <div class="row">
+            <a th:href="@{/}"
+              ><i style="font-size: 30px" class="fas fa-home"></i
+            ></a>
+          </div>
+          <h1>ĐĂNG NHẬP TÀI KHOẢN</h1>
+          <form th:action="@{/login}" method="POST" class="box">
+            <div
+              th:if="${#fields.hasErrors('*')}"
+              th:each="error : ${#fields.allErrors}"
+            >
+              <p th:text="${error}"></p>
+            </div>
+            <div class="form-input">
+              <label for="username">Username:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+              />
+            </div>
+            <div class="form-input">
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+              />
+            </div>
+            <input type="hidden" name="next" th:value="${param.next}" /><br /><br />
+            <input type="submit" value="ĐĂNG NHẬP" /><br /><br />
+            <span>Or <a th:href="@{/register}">Đăng Ký</a></span>
+          </form>
+        </section>
+        <br /><br /><br /><br /><br />
+      </div>
+    </div>
+    <!-- footer -->
+    <footer id="footer" class="container">
+      <center>
+        <section>
+          <br /><br />
+          <h2>Blog Website by Duc Tien</h2>
+          <a href="https://www.facebook.com/"
+            ><i
+              style="font-size: 36px; color: #4267b2; margin-right: 2rem"
+              class="fab fa-facebook"
+            ></i
+          ></a>
+          <a href="https://www.facebook.com/"
+            ><i
+              style="font-size: 36px; color: #405de6; margin-right: 2rem"
+              class="fab fa-instagram"
+            ></i
+          ></a>
+          <a href="https://www.youtube.com/"
+            ><i
+              style="font-size: 36px; color: #ff0000; margin-right: 2rem"
+              class="fab fa-youtube"
+            ></i
+          ></a>
+          <a href="/"
+            ><i
+              style="font-size: 36px; color: #1da1f2; margin-right: 2rem"
+              class="fab fa-twitter"
+            ></i
+          ></a>
+        </section>
+        <div id="copyright">
+          <ul class="menu">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Design: <a href="/">Duc Tien</a></li>
+          </ul>
+        </div>
+      </center>
+    </footer>
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/jquery.dropotron.min.js}"></script>
+    <script th:src="@{/js/browser.min.js}"></script>
+    <script th:src="@{/js/breakpoints.min.js}"></script>
+    <script th:src="@{/js/util.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+  </body>
+</html>

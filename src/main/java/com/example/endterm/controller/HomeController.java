@@ -1,5 +1,6 @@
 package com.example.endterm.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,9 +10,45 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @GetMapping("/")
-    public String getMethodName(Model model) {
+    public String home() {
+        return "home";
+    }
 
-        return "pages/home";
+    @GetMapping("/blog")
+    public String blog() {
+        return "blog";
+    }
+
+    @GetMapping("/post")
+    public String post() {
+        return "post";
+    }
+
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
+
+    @GetMapping("/profile")
+    @PreAuthorize("isAuthenticated()")
+    public String profile() {
+        return "profile";
+    }
+
+    @GetMapping("/add_blog")
+    @PreAuthorize("isAuthenticated()")
+    public String add_blog() {
+        return "add_blog";
     }
     
 }

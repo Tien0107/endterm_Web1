@@ -30,7 +30,7 @@
         <section class="container box feature1">
           <div class="row"><a href="/"><i style="font-size:30px" class="fas fa-home"></i></a></div>
           <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
-          <form action="/register/" method="POST" class="box">
+          <form th:action="@{/register}" method="POST" class="box">
             {% csrf_token %}
             <div class="form-input">
               <label type="text">Username:</label>

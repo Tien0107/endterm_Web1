@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" type="text/css" />
+    <title>Homepage</title>
+  </head>
+  <body>
+    <div th:replace="~{fragments/head :: header}"></div>
+    <!-- content -->
+    <div id="main-wrapper">
+      <div class="wrapper style1">
+        <div class="inner">
+          <!-- Feature 1 -->
+          <section class="container box feature1">
+            <div class="row">
+              <div class="col-12">
+                <header class="first major">
+                  <h2>Welcome to my blog</h2>
+                </header>
+              </div>
+              <div class="col-4 col-12-medium">
+                <section>
+                  <a href="#" class="image featured"
+                    ><img th:src="@{/images/img01.jpg}" alt=""
+                  /></a>
+                  <header class="second icon solid fa-star">
+                    <h3>Bài viết thú vị</h3>
+                    <p>Interesting article</p>
+                  </header>
+                </section>
+              </div>
+              <div class="col-4 col-12-medium">
+                <section>
+                  <a href="#" class="image featured"
+                    ><img th:src="@{/images/img02.jpg}" alt=""
+                  /></a>
+                  <header class="second icon solid fa-star">
+                    <h3>Nội dung đa dạng</h3>
+                    <p>Various content</p>
+                  </header>
+                </section>
+              </div>
+              <div class="col-4 col-12-medium">
+                <section>
+                  <a href="#" class="image featured"
+                    ><img th:src="@{/images/img03.jpg}" alt=""
+                  /></a>
+                  <header class="second icon solid fa-star">
+                    <h3>Tính năng ưu việt</h3>
+                    <p>Superior features</p>
+                  </header>
+                </section>
+              </div>
+              <div class="col-12">
+                <p>
+                  Website làm từ spring boot. mời bạn khám phá các tính năng thú vị
+                  của website
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <div th:replace="~{fragments/scripts :: scripts}"></div>
+
+  </body>
+</html>

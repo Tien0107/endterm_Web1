@@ -18,8 +18,25 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found !"));
     }
 
-    public User save(User user){
+
+    // Thêm các phương thức kiểm tra
+    public User save(User user) {
+        if (user.getEmail() == null || user.getEmail().trim().isEmpty()) {
+            throw new IllegalArgumentException("Email không được để trống");
+        }
+        if (user.getPassword() == null || user.getPassword().length() < 3) {
+            throw new IllegalArgumentException("Password phải có ít nhất 3 ký tự");
+        }
         return userRepository.save(user);
+    }
+
+    public void validateUser(User user) {
+        if (user.getName() == null || user.getName().trim().isEmpty()) {
+            throw new IllegalArgumentException("Tên không được để trống");
+        }   
+        if (user.getEmail() == null || user.getEmail().trim().isEmpty()) {
+            throw new IllegalArgumentException("Email không được để trống");
+        }
     }
     public User update(User user){
         return userRepository.save(user);

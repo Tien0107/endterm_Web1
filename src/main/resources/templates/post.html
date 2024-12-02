@@ -1,0 +1,96 @@
+{% extends "pages/base.html" %} {% block title %}Blog{% endblock %} 
+{% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/comment.css'%}" />
+<div id="main-wrapper">
+  <div class="wrapper style3">
+    <div class="inner">
+      <div style="padding-left: 16rem; padding-right: 16rem">
+        <div class="row">
+          <div class="col-12 col-12-medium">
+            <!-- Article list -->
+            <section class="box article-list">
+              <!-- Excerpt -->
+              <h3>{{post.title}}</h3>
+              <h5>on {{post.date}}</h5>
+              <span>by {{post.author}}</span>
+              <center>
+                <img src="{{post.image.url}}"/>
+              </center>
+              {{post.content|safe|linebreaks}} 
+              {% if user.is_authenticated %} 
+              {% if user.id == post.author.id %}
+                <a href="{% url 'edit_blog_post' post.id %}" class="button">Edit Blog Post</a>
+              {% endif %} 
+              {% endif %}
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% for comment in post.comments.all %}
+  <section>
+    <div class="container">
+      <div class="">
+        <div class="comment text-justify">
+          <img
+            src="https://i.imgur.com/yTFUilP.jpg"
+            alt=""
+            class="rounded-circle"
+            width="40"
+            height="40"
+          />
+          <h4>{{comment.author}}</h4>
+          <span>{{comment.date}}</span>
+          <br />
+          <p>{{comment.body|linebreaks}}</p>
+        </div>
+      </div>
+    </div>
+    <br />
+  </section>
+  {% endfor %} {% if user.username %}
+  <div class="container">
+    <form action="{% url 'post' post.id %}" method="POST" id="algin-form">
+      {% csrf_token %}
+      <div class="">
+        <form id="algin-form">
+          <div class="form-group">
+            <h4>comment</h4>
+            {{form.body}}
+            <br />
+            <input
+              type="submit"
+              style="
+                padding: 10px;
+                width: 150px;
+                background-color: #20b2aa;
+                border: none;
+                color: white;
+              "
+              value="Bình luận"
+            />
+          </div>
+        </form>
+      </div>
+      <br />
+    </form>
+  </div>
+  {% else %}
+  <center>
+    <a href="/login"
+      ><input
+        type="submit"
+        style="
+          margin-bottom: 2rem;
+          width: 150px;
+          background-color: #20b2aa;
+          border: none;
+          color: white;
+        "
+        value="Bình luận"
+    /></a>
+  </center>
+  {% endif %}
+</div>
+{% endblock %}

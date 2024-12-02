@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="header">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/main.css}"  type="text/css "/>
+
+</head>
+<body>
+    <div>
+        <div id="header-wrapper">
+            <div class="container">
+                <header id="header">
+                    <div class="inner">
+                        <!-- Logo -->
+                        <h1><a th:href="@{/}" id="logo">Dev Blogger</a></h1>
+                        <!-- Nav -->
+                        <nav id="nav">
+                            <ul>
+                                <li class="current_page_item"><a th:href="@{/}">Home</a></li>
+                                <li><a th:href="@{/blog}">Blog</a></li>
+                                <li><a th:href="@{/contact}">Contact</a></li>
+                                
+                                <li sec:authorize="isAuthenticated()">
+                                    <a th:href="@{/add_blog}">Add Blogs</a>
+                                </li>
+                                <li sec:authorize="isAuthenticated()">
+                                    <a th:href="@{/profile}">Profile</a>
+                                    <span sec:authentication="name"></span>
+                                    <a th:href="@{/logout}" class="button-style">Logout</a>
+                                </li>
+                                
+                                <li sec:authorize="!isAuthenticated()">
+                                    <a th:href="@{/register}" class="button-style">Register</a>
+                                    <a th:href="@{/login}" class="button-style">Log In</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </header>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

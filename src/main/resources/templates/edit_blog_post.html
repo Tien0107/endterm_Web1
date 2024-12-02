@@ -1,0 +1,24 @@
+{% extends 'pages/base.html' %}
+
+{% block title %} Edit Blog Post {% endblock %}
+{% block content %}
+<div id="main-wrapper">
+    <div class="wrapper style3">
+        <div class="inner">
+            <div class="container">
+                <form enctype="multipart/form-data" method="POST"> {% csrf_token %}
+                <div class="container mt-4">
+                    {{ form.media }}
+                    {{ form.as_p }}
+                <button class="btn btn-primary">Update Blog</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+

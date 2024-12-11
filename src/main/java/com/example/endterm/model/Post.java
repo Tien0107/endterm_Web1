@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //tu dong tao id
-    private int id;
+    private Long id;
     private String title;
     private String description;
     private String content;
@@ -25,12 +25,12 @@ public class Post {
     // end quan he
 
     
-    public Post(int id, String title, String description, String content, String image, User user) {
+    public Post(Long id, String title, String description, String content, String date , String image, User user) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.content = content;
-        // this.date = date;
+        this.date = new Date();
         this.image = image;
         this.user = user;
     }
@@ -38,10 +38,10 @@ public class Post {
     public Post(){
 
     }
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getTitle() {

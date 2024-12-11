@@ -1,84 +1,96 @@
-{% extends "pages/base.html" %} {% block title %} Home {% endblock %} {% load
-static %} {% block content %}
-<!-- Main Wrapper -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
+  <!-- Main Wrapper -->
 <style>
-    grid-row{
-        width:70%;
-    }
-    form{
-        border: 2px solid grey;
-        border-radius: 10px;
-        padding: 10px
-    }
-    input, textarea{
-      background-color: #e8f0fe;
-    }
+  grid-row{
+      width:70%;
+  }
+  form{
+      border: 2px solid grey;
+      border-radius: 10px;
+      padding: 10px
+  }
+  input, textarea{
+    background-color: #e8f0fe;
+  }
 </style>
-<div id="main-wrapper">
-  <div class="wrapper style1">
-    <div class="inner">
-      <!-- Feature 1 -->
-      <section class="container box feature1">
-        <!--Section heading-->
-        <h2 class="h1-responsive font-weight-bold text-center my-4">
-          Contact us
-        </h2>
-        <!--Section description-->
-        <p class="text-center w-responsive mx-auto mb-5">
-          Do you have any questions? Please do not hesitate to contact us
-          directly. Our team will come back to you within a matter of hours to
-          help you.
-        </p>
-        <center>
-          <!--Grid column-->
-          <form>
-            <!--Grid row-->
-            <div class="grid-row">
-                <label for="name" class="">Your name</label>
-                <input type="text" id="name" name="name" class="form-control" />
-            </div>
-            <br>
+</head>
+<body>
+  <div th:replace="~{fragments/head :: header}"></div>
+  <!-- content -->
+  <div id="main-wrapper">
+    <div class="wrapper style1">
+      <div class="inner">
+        <!-- Feature 1 -->
+        <section class="container box feature1">
+          <!--Section heading-->
+          <h2 class="h1-responsive font-weight-bold text-center my-4">
+            Contact us
+          </h2>
+          <!--Section description-->
+          <p class="text-center w-responsive mx-auto mb-5">
+            Do you have any questions? Please do not hesitate to contact us
+            directly. Our team will come back to you within a matter of hours to
+            help you.
+          </p>
+          <center>
             <!--Grid column-->
-            <!--Grid column-->
-            <div class="grid-row">
-                <label for="email" class="">Your email</label>
-                <input type="text" id="email" name="email" class="form-control" />
-            </div>
-            <br>
-            <!--Grid column-->
-            <!--Grid row-->
-            <!--Grid row-->
-            <div class="grid-row">
-                <label for="subject" class="">Subject</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  class="form-control"/>
-            </div>
-            <!--Grid row-->
-            <br>
-            <!--Grid row-->
-            <div class="grid-row">
+            <form>
+              <!--Grid row-->
+              <div class="grid-row">
+                  <label for="name" class="">Your name</label>
+                  <input type="text" id="name" name="name" class="form-control" />
+              </div>
+              <br>
               <!--Grid column-->
-              <label for="message">Your message</label>
-                <textarea
-                  type="text"
-                  id="message"
-                  name="message"
-                  rows="2"
-                  class="form-control md-textarea"></textarea>
-                
-            </div>
-            <br>
-            <input type="submit" value="SEND"/>
-            <!--Grid row-->
-          </form>
-          <div class="status"></div>
-          <!--Grid column-->
-        </center>
-      </section>
+              <!--Grid column-->
+              <div class="grid-row">
+                  <label for="email" class="">Your email</label>
+                  <input type="text" id="email" name="email" class="form-control" />
+              </div>
+              <br>
+              <!--Grid column-->
+              <!--Grid row-->
+              <!--Grid row-->
+              <div class="grid-row">
+                  <label for="subject" class="">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    class="form-control"/>
+              </div>
+              <!--Grid row-->
+              <br>
+              <!--Grid row-->
+              <div class="grid-row">
+                <!--Grid column-->
+                <label for="message">Your message</label>
+                  <textarea
+                    type="text"
+                    id="message"
+                    name="message"
+                    rows="2"
+                    class="form-control md-textarea"></textarea>
+                  
+              </div>
+              <br>
+              <input type="submit" value="SEND"/>
+              <!--Grid row-->
+            </form>
+            <div class="status"></div>
+            <!--Grid column-->
+          </center>
+        </section>
+      </div>
     </div>
   </div>
-</div>
-{% endblock %}
+  <div th:replace="~{fragments/footer :: footer}"></div>
+  <div th:replace="~{fragments/scripts :: scripts}"></div>
+</body>
+</html>
+

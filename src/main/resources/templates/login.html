@@ -22,10 +22,10 @@
           <h1>ĐĂNG NHẬP TÀI KHOẢN</h1>
 
           <div th:if="${param.error}" class="alert alert-danger">
-            <p>Tên đăng nhập hoặc mật khẩu không đúng</p>
+            <h1>Tên đăng nhập hoặc mật khẩu không đúng</h1>
           </div>
           <div th:if="${param.logout}" class="alert alert-success">
-            <p>Bạn đã đăng xuất</p>
+            <h1>Bạn đã đăng xuất</h1>
           </div>
                                    
             <form th:action="@{/login}" method="POST" class="box">
@@ -41,7 +41,7 @@
                 type="text"
                 class="form-control"
                 id="email"
-                name="email"
+                name="username"
                 placeholder="Nhập email"
                 required
               />

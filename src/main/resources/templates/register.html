@@ -1,66 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    {% load static %} {% include "pages/include/head.html" %}
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">  
+  <head th:replace="~{fragments/head :: header}">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" type="text/css">
     <title>Register</title>
   </head>
-  <style>
-    form {
-      margin-left:10rem;
-      width:70%;
-      border: 1px solid black;
-      border-radius:10px;
-    }
-    .form-input {
-      margin-left: 2rem;
-      margin-top: 1rem;
-      width: 92%;
-      text-align:left;
-    }
-    .form-input input{
-      background-color: #e8f0fe;
-    }
-  </style>
   <body>
     <div class="wrapper style1">
       <div class="inner">
         <section class="container box feature1">
-          <div class="row"><a href="/"><i style="font-size:30px" class="fas fa-home"></i></a></div>
+          <div class="row"><a th:href="@{/}"><i style="font-size:30px" class="fas fa-home"></i></a></div>
           <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
+
+          <div th:if="${#fields.hasErrors('*')}" th:each="error : ${#fields.allErrors}">
+            <p class="alert alert-danger" th:text="${error}"></p>
+          </div>
           <form th:action="@{/register}" method="POST" class="box">
-            {% csrf_token %}
+            <!-- ke no -->
             <div class="form-input">
-              <label type="text">Username:</label>
-              {{form.username}}
+              <label for="username">Username:</label>
+              <input 
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                placeholder="Nhập Username"
+                required
+               />
             </div><br>
             <div class="form-input">
               <label type="text">First Name:</label>
-              {{form.first_name}}
+              <input 
+                type="text" 
+                class="form-control"
+                name="firstName" 
+                id="firstName"
+                placeholder="Nhập Tên"
+                required 
+                />
             </div><br>
             <div class="form-input">
               <label type="text">Last Name:</label>
-              {{form.last_name}}
+              <input 
+                type="text" 
+                class="form-control"
+                name="lastName" 
+                id="lastName"
+                placeholder="Nhập Họ"
+                required 
+                />
             </div><br>
             <div class="form-input">
               <label type="text">Email:</label>
-              {{form.email}}
+              <input 
+                type="email" 
+                class="form-control"
+                name="email" 
+                id="email"
+                placeholder="Nhập Email"
+                required 
+                />
             </div><br>
             <div class="form-input">
               <label type="password">Password:</label>
-              {{form.password1}}
+              <input 
+                type="password" 
+                class="form-control"
+                name="password" 
+                id="password"
+                placeholder="Nhập mật khẩu"
+                required 
+                />
             </div><br>
             <div class="form-input">
               <label type="text">Confirm Password:</label>
-              {{form.password2}}
+              <input 
+                type="password" 
+                class="form-control"
+                name="confirmPassword" 
+                id="confirmPassword"
+                placeholder="Nhập lại mật khẩu"
+                required 
+                />
             </div><br>
             <input type="submit" value="ĐĂNG KÝ" /><br><br>
-            <span>Already have account <a href="/login">Đăng Nhập</a></span>
+            <span>Already have account <a th:href="@{/login}">Đăng Nhập</a></span>
           </form>
         </section>
       </div>
     </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <div th:replace="~{fragments/scripts :: scripts}"></div>
+
   </body>
 </html>

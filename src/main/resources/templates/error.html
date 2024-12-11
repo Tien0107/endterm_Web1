@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security"><head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error</title>
-    <link rel="stylesheet" href="{% static 'css/error.css'%}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}"  type="text/css "/>
 </head>
 <body>
+  
   <div id="main-wrapper">
     <div class="wrapper style3">
       <div class="inner">
         <div class="container">
           <h2>OOP!</h2>
           <h3>Không tìm thấy đường dẫn</h3>
-          <a href="/" class="button alt solid">Home</a>
+          <a href="@{/}" class="button alt solid">Home</a>
         </div>
       </div>
     </div>

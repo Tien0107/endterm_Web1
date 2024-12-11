@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.ui.Model;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PatchMapping;
 
 // import com.example.endterm.repository.UserRepository;
@@ -19,6 +19,8 @@ import com.example.endterm.service.UserService;
 import com.example.endterm.model.User;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -31,14 +33,14 @@ public class UserController {
     }
 
     // Get all Users    
-    @GetMapping("/users")
+    @GetMapping("api/users")
     @ResponseBody
     public List<User> getUserList() {
         return userService.findAll();
     }
 
     // Get user by id
-    @GetMapping("users/{id}")
+    @GetMapping("api/users/{id}")
     @ResponseBody
     public ResponseEntity<User> getUserbyId(@PathVariable("id") int userId) {
         try {
@@ -51,7 +53,7 @@ public class UserController {
     }
     
     // create new user
-    @PostMapping("/users")
+    @PostMapping("api/users")
     @ResponseBody
     public ResponseEntity<User> createUser(@RequestBody User user){
         try {
@@ -63,7 +65,7 @@ public class UserController {
         
     }
     //put
-    @PutMapping("/users/{id}")
+    @PutMapping("api/users/{id}")
     @ResponseBody
     public ResponseEntity<User> updateUser(@PathVariable("id") Long userId, @RequestBody User updateuser){
         try {
@@ -80,7 +82,7 @@ public class UserController {
     }
 
     //patch
-    @PatchMapping("/users/{id}")
+    @PatchMapping("api/users/{id}")
     @ResponseBody
     public ResponseEntity<User> patchUser(@PathVariable("id") Long userId, @RequestBody User patchupdate){
         User user = userService.findById(userId);
@@ -101,10 +103,19 @@ public class UserController {
 
     }
      //delete
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("api/users/{id}")
     @ResponseBody
     public List<User> removeUserById(@PathVariable("id") Long userId){
         userService.delete(userId);
         return userService.findAll();
     }
+    
+    //login
+    @GetMapping("/login")
+    public String loginPage(Model model) {
+        return "login";
+    }
+    
+
+
 }

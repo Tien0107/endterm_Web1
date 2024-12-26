@@ -18,7 +18,7 @@
           <div th:if="${#fields.hasErrors('*')}" th:each="error : ${#fields.allErrors}">
             <p class="alert alert-danger" th:text="${error}"></p>
           </div>
-          <form th:action="@{/register}" method="POST" class="box">
+          <form th:action="@{/register}" method="post" class="box">
             <!-- ke no -->
             <div class="form-input">
               <label for="username">Username:</label>
@@ -31,7 +31,7 @@
                 required
                />
             </div><br>
-            <div class="form-input">
+            <!-- <div class="form-input">
               <label type="text">First Name:</label>
               <input 
                 type="text" 
@@ -52,7 +52,7 @@
                 placeholder="Nhập Họ"
                 required 
                 />
-            </div><br>
+            </div><br> -->
             <div class="form-input">
               <label type="text">Email:</label>
               <input 

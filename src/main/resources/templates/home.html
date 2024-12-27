@@ -54,13 +54,65 @@
                 </section>
               </div>
               <div class="col-12">
-                <p>
+                <h3>
                   Website làm từ spring boot. mời bạn khám phá các tính năng thú vị
                   của website
-                </p>
+                </h3>
               </div>
             </div>
           </section>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="inner">
+            <div class="container">
+              <div class="row">
+                <div class="col-12 col-12-medium">
+                  <!-- Article list -->
+                  <section class="box article-list">
+                    <h2 class="icon fa-file-alt">Bài đăng gần đây</h2>
+                    <!-- Excerpt -->
+                    <div th:action="@{/blog}" th:object="${Post}" method="get">
+                    <div th:each="post : ${articles}">
+                      <article class="box excerpt">
+                        <div class="row">
+                          <div class="col-4">
+                            <a th:href="@{/blog/{id}(id=${post.id})}">
+                              <!-- <img th:src="${post.image.url}" height="210px" width="350px" alt=""/> -->
+                               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi6q6A44C6tt2b_SWjgVjhiHcwafqX3fWxxg&s" alt="#" width="350px" height="150px">
+                          </a>
+                          </div>
+                          <div class="col-8">
+                            <header>
+                              <!-- <span th:text="${#dates.format(post.date, 'dd-MM-yyyy')}"></span> -->
+                              <h3><a th:href="@{/post/{id}(id=${post.id})}" th:text="${post.title}"></a></h3>
+                            </header>
+                            <p th:text="${post.content}"></p><hr>
+                            <span th:text="${post.author.username}">Nguồn</span>
+                            <br><br><br>
+                            <div style="margin-left:0px" class="row">
+                              <a th:href="@{/post/{id}(id=${post.id})}" style="text-decoration:none; background-color: #7b818c; padding: 10px; border-radius:10px; color:white">Read More</a>
+                              <!-- <div th:if="${user.isSuperuser() or user.id == post.author.id}">
+                                  <a th:href="@{/delete_blog_post/{id}(id=${post.id})}" style="text-decoration:none; background-color: #7b818c; padding: 10px; border-radius:10px; color:white; margin-left:10px">Delete Blog</a>
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </article>
+                      <br>
+                    </div>
+                  </div>
+                      
+                  </section>
+                </div>
+                
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -21,15 +21,6 @@
                                 <li><a th:href="@{/blog}">Blog</a></li>
                                 <li><a th:href="@{/contact}">Contact</a></li>
                                 
-                                <li sec:authorize="isAuthenticated()">
-                                    <a th:href="@{/add_blog}">Add Blogs</a>
-                                </li>
-                                <li sec:authorize="isAuthenticated()">
-                                    <a th:href="@{/profile}">Profile</a>
-                                    <span sec:authentication="name"></span>
-                                    <a th:href="@{/logout}" class="button-style">Logout</a>
-                                </li>
-                                
                                 <li sec:authorize="!isAuthenticated()">
                                     <a th:href="@{/register}" class="button-style">Register</a>
                                     <a th:href="@{/login}" class="button-style">Log In</a>

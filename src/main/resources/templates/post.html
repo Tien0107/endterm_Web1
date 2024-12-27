@@ -20,7 +20,6 @@
                   <h5 th:text="${post.date}">Post Date</h5>
                   <span th:text="${post.author}">Post Author</span>
                   <center>
-                    <img th:src="@{${post.imageUrl}}" alt="Post Image" />
                   </center>
                   <p th:utext="${post.content}">Post Content</p>
                   <div th:if="${#authentication.name == post.author.username}">
